@@ -1,0 +1,117 @@
+{
+    "posts": [
+        {
+            "title": "Les avantages du développement full-stack",
+            "slug": "les-avantages-du-developpement-full-stack",
+            "description": "Découvrez pourquoi devenir un développeur full-stack peut booster votre carrière dans le domaine du développement web.",
+            "excerpt": "Le développement full-stack offre une perspective unique sur l'ensemble du processus de création d'applications web.",
+            "published_at": "2023-05-15T10:00:00Z",
+            "views_count": 1250,
+            "read_time": 8,
+            "media_url": "https://example.com/images/full-stack-dev.jpg",
+            "is_active": true,
+            "comments": [
+                {
+                    "message": "Excellent article ! J'envisage de devenir full-stack moi-même.",
+                    "pseudo": "TechEnthusiast"
+                },
+                {
+                    "message": "Pouvez-vous recommander des ressources pour commencer ?",
+                    "pseudo": "NewbieDev"
+                }
+            ]
+        },
+        {
+            "title": "Introduction à React Hooks",
+            "slug": "introduction-a-react-hooks",
+            "description": "Un guide complet pour comprendre et utiliser efficacement les Hooks dans vos applications React.",
+            "excerpt": "Les Hooks ont révolutionné la façon dont nous écrivons des composants React. Apprenez à les utiliser dès aujourd'hui !",
+            "published_at": "2023-06-02T14:30:00Z",
+            "views_count": 2100,
+            "read_time": 12,
+            "media_url": "https://example.com/images/react-hooks.jpg",
+            "is_active": true,
+            "comments": [
+                {
+                    "message": "Cet article m'a vraiment aidé à comprendre useEffect. Merci !",
+                    "pseudo": "ReactLearner"
+                },
+                {
+                    "message": "J'aimerais voir un article sur les Hooks personnalisés.",
+                    "pseudo": "HooksFan"
+                },
+                {
+                    "message": "Excellent contenu, très bien expliqué !",
+                    "pseudo": "WebDevPro"
+                }
+            ]
+        },
+        {
+            "title": "Optimisation des performances dans Node.js",
+            "slug": "optimisation-des-performances-dans-nodejs",
+            "description": "Apprenez les meilleures pratiques pour améliorer les performances de vos applications Node.js.",
+            "excerpt": "Des astuces et techniques pour rendre vos applications Node.js plus rapides et plus efficaces.",
+            "published_at": "2023-07-10T09:15:00Z",
+            "views_count": 1800,
+            "read_time": 15,
+            "media_url": "https://example.com/images/nodejs-performance.jpg",
+            "is_active": true,
+            "comments": [
+                {
+                    "message": "J'ai appliqué ces conseils et mon app est 30% plus rapide !",
+                    "pseudo": "NodeNinja"
+                },
+                {
+                    "message": "Pourriez-vous faire un article sur l'optimisation de MongoDB avec Node ?",
+                    "pseudo": "DBOptimizer"
+                }
+            ]
+        },
+        {
+            "title": "Sécurité des API REST",
+            "slug": "securite-des-api-rest",
+            "description": "Un guide complet sur la sécurisation de vos API REST contre les attaques courantes.",
+            "excerpt": "Protégez vos API REST contre les vulnérabilités les plus communes avec ces pratiques de sécurité essentielles.",
+            "published_at": "2023-08-05T11:45:00Z",
+            "views_count": 3200,
+            "read_time": 20,
+            "media_url": "https://example.com/images/api-security.jpg",
+            "is_active": true,
+            "comments": [
+                {
+                    "message": "Cet article devrait être obligatoire pour tous les développeurs d'API !",
+                    "pseudo": "SecurityFirst"
+                },
+                {
+                    "message": "J'ai trouvé la section sur l'authentification JWT particulièrement utile.",
+                    "pseudo": "APINewbie"
+                },
+                {
+                    "message": "Pourriez-vous aborder la sécurité des WebSockets dans un prochain article ?",
+                    "pseudo": "RealTimeDev"
+                }
+            ]
+        },
+        {
+            "title": "Débuter avec TypeScript",
+            "slug": "debuter-avec-typescript",
+            "description": "Un guide pas à pas pour commencer à utiliser TypeScript dans vos projets JavaScript.",
+            "excerpt": "Découvrez comment TypeScript peut améliorer la qualité et la maintenabilité de votre code JavaScript.",
+            "published_at": "2023-09-20T13:00:00Z",
+            "views_count": 1500,
+            "read_time": 10,
+            "media_url": "https://example.com/images/typescript-intro.jpg",
+            "is_active": true,
+            "comments": [
+                {
+                    "message": "Grâce à cet article, j'ai enfin compris l'intérêt de TypeScript !",
+                    "pseudo": "JSLover"
+                },
+                {
+                    "message": "Les exemples sont très clairs. Merci pour ce super contenu !",
+                    "pseudo": "TypeScriptNewbie"
+                }
+            ]
+        }
+    ]
+}

@@ -14,7 +14,7 @@ import {
 const router = express.Router();
 
 
-router.post('/', authenticateToken as express.RequestHandler, upload.single('media'), createPost as express.RequestHandler);
+router.post('/', authenticateToken as express.RequestHandler, upload.single('file'), createPost as express.RequestHandler);
 router.get('/', getAllPosts as express.RequestHandler);
 router.get('/:slug', getPostBySlug as express.RequestHandler);
 router.put('/:id', authenticateToken as express.RequestHandler, updatePost as express.RequestHandler);

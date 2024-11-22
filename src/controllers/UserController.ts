@@ -4,6 +4,13 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User';
 
 class UserController {
+    public excludeFields(obj: any, fieldsToExclude: string[]): any {
+        console.log(fieldsToExclude)
+        fieldsToExclude.forEach(field => {
+            delete obj[field];
+        });
+        return obj;
+    }
     async register(req: Request, res: Response) {
         try {
             const { name, email, password } = req.body;
@@ -64,13 +71,11 @@ class UserController {
                 { expiresIn: '1d' },
 
             );
-
+            const cleanedUser = this.excludeFields(user.toObject(), ['password']);
             res.json({
                 message: 'Connexion réussie',
                 user: {
-                    id: user._id,
-                    name: user.name,
-                    email: user.email
+                    cleanedUser
                 },
                 token
             });
