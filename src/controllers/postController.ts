@@ -7,9 +7,11 @@ import { calculateReadTime } from '../services/readTimeService';
 import { viewableService } from '../services/ViewableService';
 
 class PostController {
+    constructor() {
+        this.incrementViewCount= this.incrementViewCount.bind(this)
+    }
     async createPost(req: Request, res: Response): Promise<void> {
         try {
-            console.log(req.body)
             if (!req.file) {
                 res.status(400).json({ message: 'No file provided' });
                 return;
@@ -51,7 +53,6 @@ class PostController {
                     excerpt
                 };
             });
-            console.log(postsWithExcerpt);
             res.status(200).json(postsWithExcerpt);
         } catch (error) {
             console.error('Error fetching posts:', error);
