@@ -69,6 +69,7 @@ class PostController {
                 res.status(404).json({ message: 'Post not found' });
                 return;
             }
+            await this.incrementViewCount(req, res, post);
             res.status(200).json(post);
         } catch (error) {
             console.error('Error fetching post:', error);
@@ -129,9 +130,8 @@ class PostController {
         }
     }
 
-    async incrementViewCount(req: Request, res: Response): Promise<void> {
+    async incrementViewCount(req: Request, res: Response, post: PostInterface): Promise<void> {
         try {
-            const post = await Post.findById(req.params.id);
             if (!post) {
                 res.status(404).json({ message: 'Post not found' });
                 return;
