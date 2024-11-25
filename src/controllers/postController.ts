@@ -106,12 +106,11 @@ class PostController {
                     req.params.id,
                     { $inc: { views_count: 1 } }
                 );
-            }
             const viewCount = await viewableService.getViewCount(post);
             const uniqueViewCount = await viewableService.getUniqueViewCount(post);
-            console.log({ viewCount, uniqueViewCount })
             post.views_count = viewCount;
             post.save();
+            }
 
             res.status(200).json(post);
         } catch (error) {
