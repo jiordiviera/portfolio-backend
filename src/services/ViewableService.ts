@@ -37,6 +37,7 @@ export class ViewableService {
                     $gte: new Date(Date.now() - this.cooldownPeriod)
                 }
             });
+            console.log(recentView)
 
             if (recentView) {
                 return false; // View not recorded (too recent)
@@ -50,7 +51,7 @@ export class ViewableService {
                 ip_address: req.ip,
                 user_agent: req.get('user-agent')
             });
-
+console.log({view:view})
             await view.save();
             return true; // View recorded successfully
         } catch (error) {

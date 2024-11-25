@@ -7,9 +7,6 @@ import { calculateReadTime } from '../services/readTimeService';
 import { viewableService } from '../services/ViewableService';
 
 class PostController {
-    constructor() {
-        this.incrementViewCount= this.incrementViewCount.bind(this)
-    }
     async createPost(req: Request, res: Response): Promise<void> {
         try {
             if (!req.file) {
@@ -30,7 +27,7 @@ class PostController {
                 read_time,
                 media_url: mediaUrl,
                 author: userId,
-                published_at:new Date()
+                published_at: new Date()
             });
 
             await newPost.save();
@@ -59,8 +56,39 @@ class PostController {
             res.status(500).json({ message: 'Error fetching posts', error: error instanceof Error ? error.message : String(error) });
         }
     }
+    /*
+     private incrementViewCount = (req: Request, res: Response, post: PostInterface) => {
+            try {
+                if (!post) {
+                    res.status(404).json({ message: 'Post not found' });
+                    return;
+                }
 
+                const viewRecorded = await viewableService.recordView(post, req);
+                if (viewRecorded) {
+                    // Only increment the counter if the view was actually recorded
+                    await Post.findByIdAndUpdate(
+                        req.params.id,
+                        { $inc: { views_count: 1 } }
+                    );
+                }
 
+                const viewCount = await viewableService.getViewCount(post);
+                const uniqueViewCount = await viewableService.getUniqueViewCount(post);
+
+                res.status(200).json({
+                    total_views: viewCount,
+                    unique_views: uniqueViewCount,
+                    view_recorded: viewRecorded
+                });
+            } catch (error) {
+                console.error('Error incrementing view count:', error);
+                res.status(500).json({
+                    message: 'Error incrementing view count',
+                    error: error instanceof Error ? error.message : String(error)
+                });
+            }
+        } */
     async getPostBySlug(req: Request, res: Response): Promise<void> {
         try {
             const post = await Post
@@ -70,7 +98,21 @@ class PostController {
                 res.status(404).json({ message: 'Post not found' });
                 return;
             }
-            await this.incrementViewCount(req, res, post);
+            console.log(this)
+            const viewRecorded = await viewableService.recordView(post, req);
+            if (viewRecorded) {
+                // Only increment the counter if the view was actually recorded
+                await Post.findByIdAndUpdate(
+                    req.params.id,
+                    { $inc: { views_count: 1 } }
+                );
+            }
+            const viewCount = await viewableService.getViewCount(post);
+            const uniqueViewCount = await viewableService.getUniqueViewCount(post);
+            console.log({ viewCount, uniqueViewCount })
+            post.views_count = viewCount;
+            post.save();
+
             res.status(200).json(post);
         } catch (error) {
             console.error('Error fetching post:', error);
@@ -131,38 +173,7 @@ class PostController {
         }
     }
 
-    async incrementViewCount(req: Request, res: Response, post: PostInterface): Promise<void> {
-        try {
-            if (!post) {
-                res.status(404).json({ message: 'Post not found' });
-                return;
-            }
 
-            const viewRecorded = await viewableService.recordView(post, req);
-            if (viewRecorded) {
-                // Only increment the counter if the view was actually recorded
-                await Post.findByIdAndUpdate(
-                    req.params.id,
-                    { $inc: { views_count: 1 } }
-                );
-            }
-
-            const viewCount = await viewableService.getViewCount(post);
-            const uniqueViewCount = await viewableService.getUniqueViewCount(post);
-
-            res.status(200).json({
-                total_views: viewCount,
-                unique_views: uniqueViewCount,
-                view_recorded: viewRecorded
-            });
-        } catch (error) {
-            console.error('Error incrementing view count:', error);
-            res.status(500).json({
-                message: 'Error incrementing view count',
-                error: error instanceof Error ? error.message : String(error)
-            });
-        }
-    }
 
     async getViewsStats(req: Request, res: Response): Promise<void> {
         try {
