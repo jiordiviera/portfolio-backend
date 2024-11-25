@@ -43,8 +43,7 @@ class PostController {
         try {
             const posts = await Post
                 .find({ is_active: true })
-                .sort({ published_at: -1 })
-                .populate("comments");
+                .sort({ published_at: -1 });
             const postsWithExcerpt = posts.map(post => {
                 const excerpt = post.description.substring(0, 150) + '...'; // Generate excerpt from description
                 return {
@@ -63,7 +62,9 @@ class PostController {
 
     async getPostBySlug(req: Request, res: Response): Promise<void> {
         try {
-            const post = await Post.findOne({ slug: req.params.slug, is_active: true }).populate('comments');
+            const post = await Post
+                .findOne({ slug: req.params.slug, is_active: true })
+                .populate('comments');
             if (!post) {
                 res.status(404).json({ message: 'Post not found' });
                 return;
