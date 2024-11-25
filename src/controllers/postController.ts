@@ -41,7 +41,10 @@ class PostController {
 
     async getAllPosts(req: Request, res: Response): Promise<void> {
         try {
-            const posts = await Post.find({ is_active: true }).sort({ published_at: -1 });
+            const posts = await Post
+                .find({ is_active: true })
+                .sort({ published_at: -1 })
+                .populate("comments");
             const postsWithExcerpt = posts.map(post => {
                 const excerpt = post.description.substring(0, 150) + '...'; // Generate excerpt from description
                 return {
